@@ -1,0 +1,28 @@
+version: 3
+
+tasks:
+  default:
+    dir: "./python"
+    cmds:
+      - task sync
+      - "rye run python ./src/python/main.py"
+
+  sync:
+    dir: "./python"
+    cmds:
+      - "rye sync"    
+
+  update-budoux:
+    dir: "./python"
+    cmds:
+      - "rye add budoux"
+
+  git:
+    cmds:
+      - "echo '# shuffle_dummy_images' >> README.md"
+      - "git init"
+      - "git add README.md"
+      - "git commit -m 'first commit'"
+      - "git branch -M main"
+      - "git remote add origin git@github.com:junphilos/shuffle_dummy_images.git"
+      - "git push -u origin main"
